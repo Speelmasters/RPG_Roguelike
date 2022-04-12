@@ -62,9 +62,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Health")
 	void HealPercent(float healPercent);
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MainCharAnimMontages")
+	UAnimMontage* M_lightAttack;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "MainCharAnimMontages")
+	UAnimMontage* M_heavyAttack;
 protected:
-	UPROPERTY(EditAnywhere, Category = "MainCharAnimMontages")
-	UAnimMontage* attack1;
+	
 
 	/** Resets HMD orientation in VR. */
 	void OnResetVR();

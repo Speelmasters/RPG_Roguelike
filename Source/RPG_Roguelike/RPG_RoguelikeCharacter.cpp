@@ -50,7 +50,6 @@ ARPG_RoguelikeCharacter::ARPG_RoguelikeCharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named MyCharacter (to avoid direct content references in C++)
-	attack1;
 }
 
 //////////////////////////////////////////////////////////////////////////
@@ -217,8 +216,13 @@ void ARPG_RoguelikeCharacter::AttackLight()
 	//UE_LOG(LogTemp, Warning, TEXT("light attack"));
 	if (!isAttacking)
 	{
+		if (M_lightAttack)
+		{
+			UE_LOG(LogTemp, Warning, TEXT("light attack"));
+			PlayAnimMontage(M_lightAttack);
+		}
 		attackType = 0;
-		isAttacking = true;
+		//isAttacking = true;
 	}
 }
 
@@ -226,8 +230,11 @@ void ARPG_RoguelikeCharacter::AttackHeavy()
 {
 	if (!isAttacking)
 	{
-		attackType = 1;
-		isAttacking = true;
+		if (M_heavyAttack)
+		{
+			PlayAnimMontage(M_heavyAttack);
+			
+		}
 	}
 }
 
